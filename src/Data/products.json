@@ -1,0 +1,106 @@
+[{
+    "id": 1,
+    "title": "Licuadora Multifunción",
+    "description": "Licuadora Multifunción de 4 velocidades",
+    "price": 5374,
+    "pictureUrl": "http://dummyimage.com/184x100.png/cc0000/ffffff",
+    "class": "Electrodomestico"
+  }, {
+    "id": 2,
+    "title": "Set de cornets de metal",
+    "description": "Juego de 3 cornets de metal",
+    "price": 587,
+    "pictureUrl": "http://dummyimage.com/156x100.png/dddddd/000000",
+    "class": "utencillos"
+  }, {
+    "id": 3,
+    "title": "Espatula de reposteria",
+    "description": "Espatula de 14 cm en acero inoxidable",
+    "price": 327,
+    "pictureUrl": "http://dummyimage.com/207x100.png/ff4444/ffffff",
+    "class": "Pasteleria"
+  }, {
+    "id": 4,
+    "title": "Batidora planetaria",
+    "description": "Batidora planetara 3 velocidades con aditamentos",
+    "price": 5274,
+    "pictureUrl": "http://dummyimage.com/196x100.png/ff4444/ffffff",
+    "class": "Electrodomestico"
+  }, {
+    "id": 5,
+    "title": "Cuchillo Santoku",
+    "description": "Cuchillo estilo santoku de acero forjado",
+    "price": 3502,
+    "pictureUrl": "http://dummyimage.com/239x100.png/cc0000/ffffff",
+    "class": "utencillos"
+  }, {
+    "id": 6,
+    "title": "Cafetera de expreso",
+    "description": "Cafetera de expreso con valvula de vapor",
+    "price": 4693,
+    "pictureUrl": "http://dummyimage.com/234x100.png/ff4444/ffffff",
+    "class": "cafeteria"
+  }, {
+    "id": 7,
+    "title": "Cafetera Italiana",
+    "description": "Cafetera italiana de 750 ml",
+    "price": 2490,
+    "pictureUrl": "http://dummyimage.com/189x100.png/ff4444/ffffff",
+    "class": "cafeteria"
+  }, {
+    "id": 8,
+    "title": "Procesadora Multifunción",
+    "description": "Set de Mixer, procesadora y batidora de mano",
+    "price": 3736,
+    "pictureUrl": "http://dummyimage.com/111x100.png/cc0000/ffffff",
+    "class": "Electrodomestico"
+  }, {
+    "id": 9,
+    "title": "Cuchilla de Chef",
+    "description": "Cuchilla de chef de 21 cm",
+    "price": 2535,
+    "pictureUrl": "http://dummyimage.com/236x100.png/dddddd/000000",
+    "class": "utencillos"
+  }, {
+    "id": 10,
+    "title": "Wok",
+    "description": "Wok de 40 cm de diametro",
+    "price": 2961,
+    "pictureUrl": "http://dummyimage.com/233x100.png/5fa2dd/ffffff",
+    "class": "Ollas y sartenes"
+  }, {
+    "id": 11,
+    "title": "Sartén de hierro",
+    "description": "Sartén de hierro de 24 cm de diametro",
+    "price": 1879,
+    "pictureUrl": "http://dummyimage.com/115x100.png/ff4444/ffffff",
+    "class": "Ollas y sartenes"
+  }, {
+    "id": 12,
+    "title": "Plato giratorio",
+    "description": "Plato giratorio para decorar tortas",
+    "price": 1019,
+    "pictureUrl": "http://dummyimage.com/162x100.png/5fa2dd/ffffff",
+    "class": "repostería" 
+  }, {
+    "id": 13,
+    "title": "Espatula de silicona",
+    "description": "Espatula de silicona",
+    "price": 335,
+    "pictureUrl": "http://dummyimage.com/196x100.png/cc0000/ffffff",
+    "class": "repostería"
+  }, {
+    "id": 14,
+    "title": "Tapis de silicona",
+    "description": "tapis de silicona de 20x20 cm",
+    "price": 856,
+    "pictureUrl": "http://dummyimage.com/230x100.png/ff4444/ffffff",
+    "class": "repostería"
+  }, {
+    "id": 15,
+    "title": "Set de salero y pimentero",
+    "description": "Set de salero y pimentero de acrilico",
+    "price": 1050,
+    "pictureUrl": "http://dummyimage.com/162x100.png/dddddd/000000",
+    "class": "utencillos"
+  }]
