@@ -1,16 +1,32 @@
-import './App.css';
-import { ItemListContainer } from './Container/ItemListContainer';
-import  NavBar  from './Componets/NavBar';
-
-
+import "./App.css";
+import { ItemListContainer } from "./container/section/ItemListContainer";
+import NavBar from "./components/NavBar";
+import ItemDetailContainer from "./container/section/ItemDetailContainer";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 
 function App() {
+  const onAdd = (stock) => console.log("Stock actual:  " + stock);
+
   return (
-    <div className="App">
-      <NavBar/>
-      <ItemListContainer greeting={"Hamti cocina con amor"} />
-    
-        </div>
+    <BrowserRouter>
+      <div className="App">
+        <NavBar />
+        <Routes>
+          <Route
+            path="/"
+            element={<ItemListContainer greeting={"Hamti cocina con amor"} />}
+          />
+          <Route
+            path="/category/:id"
+            element={<ItemListContainer greeting={"Hamti cocina con amor"} />}
+          />
+          <Route
+            path="/item/:id"
+            element={<ItemDetailContainer onAdd={onAdd} />}
+          />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 

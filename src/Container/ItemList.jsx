@@ -6,13 +6,16 @@ function GrowExample() {
   return <Spinner animation="grow" />;
 }
 
-export const ItemList = ({ list }) => {
+const ItemList = ({ list }) => {
+
   return (
     <>
-      {!list.length && <GrowExample />}
+      {list.length === 0 && <GrowExample/>}
       {list.map((item) => (
         <Item key={item.id} item={item} />
       ))}
     </>
   );
 };
+
+export default ItemList;
