@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import products from "../../data/products.json";
+import products from "../../Data/products.json";
 import ItemList from "../ItemList";
 
 export const ItemListContainer = ({ greeting }) => {

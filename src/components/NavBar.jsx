@@ -4,10 +4,10 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { NavLink } from "react-router-dom";
 
-import products from "../data/products.json";
+import products from "../Data/products.json";
 import CardWidget from "./CardWidget";
 import Logo from "../Assets/img/HamtiLOGO.png";
-import item from "../container/Item";
+
 
 const NavBar = () => {
   const [itemsMenu, setItemsMenu] = useState([]);

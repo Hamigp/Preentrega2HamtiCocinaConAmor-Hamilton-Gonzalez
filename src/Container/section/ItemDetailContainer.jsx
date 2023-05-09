@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import ItemDetail from "../ItemDetail";
 import { Container } from "react-bootstrap";
-import products from "../../data/products.json";
+import products from "../../Data/products.json";
 
 const ItemDetailContainer = ({ onAdd }) => {
   const [product, setProduct] = useState({});
