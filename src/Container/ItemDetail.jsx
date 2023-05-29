@@ -1,13 +1,11 @@
 import React, { useContext } from "react";
 import ItemCounter from "../components/ItemCounter";
 import Card from "react-bootstrap/Card";
-import { Button } from "react-bootstrap";
-import { useState } from "react";
 import { CartContext } from "../Context/CartContext";
 
 
 const ItemDetail = ({ product }) => {
-  const { id, title, price, pictureUrl, stock, category, description } =
+  const { id, title, price, pictureUrl, stock,description } =
     product;
   const { addToCart } = useContext(CartContext);
 

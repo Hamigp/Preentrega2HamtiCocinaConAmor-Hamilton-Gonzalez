@@ -3,15 +3,14 @@ import { useState } from "react";
 export const useCart = () => {
 	const [cartOrder, setCart] = useState([])
 
-const isInCart = (itemId) => 
- cartOrder.some((item) => item.id === itemId);
-  
-
+  const isInCart = (itemId) => 
+    cartOrder.some((item) => item.id === itemId);
+   
   const addToCart = (item, quantity) => {
     
     if (isInCart(item.id)) {
       setCart((prev) => {
-       prev.map((cartItem) => {
+       return prev.map((cartItem) => {
           if (cartItem.id === item.id) {
             return {
               ...cartItem,

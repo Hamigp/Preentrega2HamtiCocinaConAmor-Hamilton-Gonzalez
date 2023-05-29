@@ -1,6 +1,6 @@
 import { useState, useContext } from "react"
-import { getFirestore, collection, addDoc } from "firebase/firestore"
-import { Container, Table, Row, Col, Form } from "react-bootstrap"
+import { getFirestore, collection, addDoc} from "firebase/firestore"
+import { Container, Table, Row, Col, Form, Button } from "react-bootstrap"
 import { CartContext } from "../Context/CartContext"
 
 export const Cart = () => {
@@ -9,18 +9,28 @@ export const Cart = () => {
 		phone: "",
 		email: "",
 	})
+	const db = getFirestore();
 
-	const { isInCart, addToCart, removeFromCart, clearCart, cartOrder } = useContext(CartContext)
-	console.log(cartOrder)
+	
+	const { removeFromCart, clearCart, cartOrder } = useContext(CartContext)
+
 
 	const sendOrder = () => {
 		const order = {
-			Client: formValues,
-			items: cartOrder,
-			//total: total(),
-		}
-	
-	}
+		  Client: formValues,
+		  items: cartOrder,
+		  total: total(),
+		};
+	  
+		addDoc(collection(db, "orders"), order)
+		  .then((docRef) => {
+			const orderId = docRef.id;
+			alert("Compra realizada con éxito. Número de compra: " + orderId);
+		  })
+		  .catch((error) => {
+			console.error("Error al guardar la orden: ", error);
+		  });
+	  };
 
 	const handleChange = ev => {
 		setFormValues(prev => ({
@@ -29,75 +39,103 @@ export const Cart = () => {
 		}))
 	}
 
-	 /*const total = () =>
+	 const total = () =>
 		cartOrder.reduce(
 			(acumulador, valorActual) =>
 				acumulador + valorActual.quantity * valorActual.price,
 			0
-		) */
-
+		) 
+		const isFormComplete = formValues.name !== "" && formValues.phone !== "" && formValues.email !== "";
 	return (
 		<Container>
 			<Table striped bordered hover variant="dark">
 				<thead>
 					<tr>
-						<th>#</th>
 						<th>Nombre</th>
 						<th>Precio</th>
 						<th>Cantidad</th>
 					</tr>
 				</thead>
 				<tbody>
-				{/*cart && cart.map(item => (
+				{cartOrder && cartOrder.map(item => (
 						<tr key={item.id}>
 							<td>{item.title}</td>
-							<td>
-								<img src={item.pictureUrl} alt={item.description} />
-							</td>
-							<td>{item.price}</td>
+							<td>${item.price}</td>	
 							<td>{item.quantity}</td>
 							<td>
 								<button onClick={() => removeFromCart(item.id)}>Eliminar</button>
 							</td>
 						</tr>
-					))*/}
+					))}
 				</tbody>
 				<tfoot>
 					<tr>
 						<td>Total</td>
 						<td></td>
 						<td></td>
-						<td>{/*total()*/}</td>
-						<td></td>
-					</tr>
+						<td>{total()}</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+						<td><Button variant ="dark"onClick={clearCart}> Vaciar el carrito</Button> </td>
+</tr>
+					
 				</tfoot>
 			</Table>
 			<Row>
 				<Form.Label column="lg" lg={2}>
-					Large Text
-				</Form.Label>
+					Nombre
+									</Form.Label>
 				<Col>
-					<Form.Control size="lg" type="text" placeholder="Large text" />
+					<Form.Control size="lg" type="text" 
+					placeholder="Ingrese su nombre"
+					onChange={handleChange}
+					value={formValues.name}
+					name="name"
+					pattern="[A-Za-z\s]+"
+					/>
+					
 				</Col>
 			</Row>
 			<br />
 			<Row>
-				<Form.Label column lg={2}>
-					Normal Text
-				</Form.Label>
-				<Col>
-					<Form.Control type="text" placeholder="Normal text" />
-				</Col>
-			</Row>
+  <Form.Label column lg={2}>
+    Email
+  </Form.Label>
+  <Col>
+    <Form.Control
+     size="lg"
+	 type="email"
+	 placeholder="Ingrese su email"
+	 onChange={handleChange}
+	 value={formValues.email}
+	 name="email"
+	 pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}"
+	 required 
+    />
+    <Form.Control.Feedback type="invalid">
+      Por favor, ingrese un correo electrónico válido.
+    </Form.Control.Feedback>
+  </Col>
+</Row>
 			<br />
 			<Row>
 				<Form.Label column="sm" lg={2}>
-					Small Text
+					Numero de telefono
 				</Form.Label>
 				<Col>
-					<Form.Control size="sm" type="text" placeholder="Small text" />
+				<Form.Control size="lg" type="number" 
+					placeholder="Ingrese un telefono"
+					onChange={handleChange}
+					value={formValues.phone}
+					name="phone"
+					pattern="[0-9]+"/>
 				</Col>
-			</Row>
+			</Row> 
+			<br />
+			<Button variant="dark" onClick={sendOrder}disabled={!isFormComplete} >Finalizar compra</Button>
 		</Container>
 	)
 }

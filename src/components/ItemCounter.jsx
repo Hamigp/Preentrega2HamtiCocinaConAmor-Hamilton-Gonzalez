@@ -1,14 +1,12 @@
-import React, { useState, useContext } from "react";
+import React, { useState} from "react";
 import { Button } from "react-bootstrap";
-import { CartContext } from "../Context/CartContext";
-
-
+import { Link } from "react-router-dom";
 
 function ItemCount({ stock, onAdd }) {
   const [counter, setCounter] = useState(0);
   const [isCounting, setIsCounting] = useState(true);
 
-  const handleIncrement = (onAdd) => {
+  const handleIncrement = () => {
     if (counter < stock) {
       setCounter(counter + 1);
     }
@@ -20,20 +18,22 @@ function ItemCount({ stock, onAdd }) {
     }
   };
 
- 
-
-  const handleRestart = () => {
-    setIsCounting(true);
+  const handleAddToCart = () => {
+    onAdd(counter);
+    setIsCounting(false);
   };
 
-  const { itemId } = useContext(CartContext); 
+
+ 
+
   if (!isCounting) {
     return (
       <div>
-        <Button onClick={handleRestart} variant="dark">
-          Volver
-        </Button>{" "}
-        
+         <Link to="/" style={{ textDecoration: "none" }}>
+          <Button variant="dark">
+            Seguir comprando
+          </Button>
+        </Link>{" "}
       </div>
     );
   }
@@ -51,10 +51,9 @@ function ItemCount({ stock, onAdd }) {
       </Button>{" "}
       <br />
       <br />
-      <Button onClick={()=>onAdd(counter)}  variant="dark">
-                     Agregar al Carrito
-                </Button>
-      
+      <Button onClick={handleAddToCart} variant="dark">
+        Agregar al Carrito
+      </Button>
     </div>
   );
 }
