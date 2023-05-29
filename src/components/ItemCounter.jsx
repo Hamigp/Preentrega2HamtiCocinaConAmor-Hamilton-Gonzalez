@@ -1,37 +1,62 @@
-import { useState, useEffect } from "react";
-import { Container } from "react-bootstrap";
+import React, { useState, useContext } from "react";
 import { Button } from "react-bootstrap";
+import { CartContext } from "../Context/CartContext";
+
+
 
 function ItemCount({ stock, onAdd }) {
   const [counter, setCounter] = useState(0);
-  useEffect(() => {
-    onAdd(stock - counter);
-  }, [counter]);
+  const [isCounting, setIsCounting] = useState(true);
 
-  const handleincrement = () => {
+  const handleIncrement = (onAdd) => {
     if (counter < stock) {
       setCounter(counter + 1);
     }
   };
 
-  const handledecrement = () => {
+  const handleDecrement = () => {
     if (counter > 0) {
       setCounter(counter - 1);
     }
   };
 
+ 
+
+  const handleRestart = () => {
+    setIsCounting(true);
+  };
+
+  const { itemId } = useContext(CartContext); 
+  if (!isCounting) {
+    return (
+      <div>
+        <Button onClick={handleRestart} variant="dark">
+          Volver
+        </Button>{" "}
+        
+      </div>
+    );
+  }
+
   return (
     <div>
-      <Button onClick={handledecrement} variant="dark">
+      <Button onClick={handleDecrement} variant="dark">
         -
       </Button>{" "}
       <span>
         <b>{counter}</b>
       </span>
-      <Button onClick={handleincrement} variant="dark">
+      <Button onClick={handleIncrement} variant="dark">
         +
       </Button>{" "}
+      <br />
+      <br />
+      <Button onClick={()=>onAdd(counter)}  variant="dark">
+                     Agregar al Carrito
+                </Button>
+      
     </div>
   );
 }
+
 export default ItemCount;

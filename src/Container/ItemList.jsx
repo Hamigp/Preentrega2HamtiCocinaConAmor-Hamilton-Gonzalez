@@ -7,15 +7,17 @@ function GrowExample() {
 }
 
 const ItemList = ({ list }) => {
+  
 
   return (
     <>
-      {list.length === 0 && <GrowExample/>}
+      {list.length === 0 && <GrowExample />}
       {list.map((item) => (
         <Item key={item.id} item={item} />
       ))}
     </>
   );
 };
+
 
 export default ItemList;

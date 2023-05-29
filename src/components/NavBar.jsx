@@ -3,8 +3,8 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { NavLink } from "react-router-dom";
+import { getFirestore, collection, getDocs } from "firebase/firestore"
 
-import products from "../Data/products.json";
 import CardWidget from "./CardWidget";
 import Logo from "../Assets/img/HamtiLOGO.png";
 
@@ -13,17 +13,30 @@ const NavBar = () => {
   const [itemsMenu, setItemsMenu] = useState([]);
 
   useEffect(() => {
-    const ProductList = new Promise((resolve, reject) => {
-      resolve(products);
-    });
+    const db = getFirestore();
+    const refCollection = collection(db, "items");
 
-    ProductList.then((result) => {
-      const categories = result.map((item) => item.category);
-      const itemsCategories = new Set(categories);
-      setItemsMenu([...itemsCategories].sort());
-    });
+    getDocs(refCollection)
+      .then((snapshot) => {
+        if (snapshot.size === 0) {
+          
+        } else {
+          const categories = snapshot.docs.map((item) => item.data().category);
+          
+          const uniqueCategories = [...new Set(categories)].sort();
+                  setItemsMenu(uniqueCategories);
+        }
+      })
+      .catch((error) => {
+        
+      });
+    
   }, []);
 
+
+  
+
+  
   return (
     <header>
       <Navbar bg="dark" variant="dark">
