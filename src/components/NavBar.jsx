@@ -7,7 +7,7 @@ import { getFirestore, collection, getDocs } from "firebase/firestore";
 
 import CardWidget from "./CardWidget";
 import Logo from "../Assets/img/HamtiLOGO.png";
-import { CartContext } from "../Context/CartContext";
+import { CartContext } from "../context/CartContext";
 
 const NavBar = () => {
   const [itemsMenu, setItemsMenu] = useState([]);

@@ -1,33 +1,30 @@
 import React, { useContext } from "react";
 import ItemCounter from "../components/ItemCounter";
 import Card from "react-bootstrap/Card";
-import { CartContext } from "../Context/CartContext";
-
+import "./ItemDetail.css"; 
+import { CartContext } from "../context/CartContext";
 
 const ItemDetail = ({ product }) => {
-  const { id, title, price, pictureUrl, stock,description } =
-    product;
+  const { id, title, price, pictureUrl, stock, description } = product;
   const { addToCart } = useContext(CartContext);
 
   const handleOnAdd = (quantity) => {
     const item = { id, title, price };
-   
-   addToCart(item, quantity);
+    addToCart(item, quantity);
   };
 
   return (
-    <Card className="mx-auto" style={{ width: "18rem", height: "auto" }}>
-      <Card.Text>
-        <Card.Title>{title}</Card.Title>
-      </Card.Text>
-      <Card.Img
-        src={pictureUrl}
-        alt={title}
-        className="img-thumbnail mx-auto"
-      />
+    <Card className="mx-auto item-detail-card">
       <Card.Body>
+        <Card.Text>
+          <Card.Title>{title}</Card.Title>
+          <p className="item-description">{description}</p>
+        </Card.Text>
+        <div className="item-image-container">
+          <Card.Img src={pictureUrl} alt={title} className="item-image" />
+        </div>
         <b>Precio: ${price}</b>
-        <p>Descripcion: {description}</p>
+        <p>Stock disponible: {stock}</p>
         <ItemCounter itemId={id} onAdd={handleOnAdd} stock={stock} />
       </Card.Body>
     </Card>

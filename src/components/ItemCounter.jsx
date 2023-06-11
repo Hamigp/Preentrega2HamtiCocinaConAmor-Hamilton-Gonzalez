@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -19,20 +19,17 @@ function ItemCount({ stock, onAdd }) {
   };
 
   const handleAddToCart = () => {
-    onAdd(counter);
-    setIsCounting(false);
+    if (counter > 0) {
+      onAdd(counter);
+      setIsCounting(false);
+    }
   };
-
-
- 
 
   if (!isCounting) {
     return (
       <div>
-         <Link to="/" style={{ textDecoration: "none" }}>
-          <Button variant="dark">
-            Seguir comprando
-          </Button>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <Button variant="dark">Seguir comprando</Button>
         </Link>{" "}
       </div>
     );
@@ -40,18 +37,14 @@ function ItemCount({ stock, onAdd }) {
 
   return (
     <div>
-      <Button onClick={handleDecrement} variant="dark">
-        -
-      </Button>{" "}
+      <Button onClick={handleDecrement} variant="dark">-</Button>{" "}
       <span>
         <b>{counter}</b>
       </span>
-      <Button onClick={handleIncrement} variant="dark">
-        +
-      </Button>{" "}
+      <Button onClick={handleIncrement} variant="dark">+</Button>{" "}
       <br />
       <br />
-      <Button onClick={handleAddToCart} variant="dark">
+      <Button onClick={handleAddToCart} variant="dark" disabled={counter === 0}>
         Agregar al Carrito
       </Button>
     </div>

@@ -1,14 +1,14 @@
 import "./App.css";
-import { ItemListContainer } from "./Container/section/ItemListContainer";
+import { ItemListContainer } from "./container/section/ItemListContainer";
 import NavBar from "./components/NavBar";
-import ItemDetailContainer from "./Container/section/ItemDetailContainer";
+import ItemDetailContainer from "./container/section/ItemDetailContainer"
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Cart from "./components/Cart";
 
-import { CartContext, CartProvider } from "./Context/CartContext";
+import {CartProvider} from "./context/CartContext";
 
 function App() {
-  const onAdd = (stock) => console.log("Stock actual:  " + stock);
+
 
   return (
     <BrowserRouter>
@@ -26,7 +26,7 @@ function App() {
             />
             <Route
               path="/item/:id"
-              element={<ItemDetailContainer onAdd={onAdd} />}
+              element={<ItemDetailContainer/>}
             />
             <Route path="/Cart" element={<Cart />} />
             <Route path="*" element={"404 Page not found"} />

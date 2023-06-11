@@ -1,0 +1,16 @@
+.item-detail-card {
+    width: 18rem;
+    height: auto;
+  }
+  
+  .item-image-container {
+    height: 200px; /* Ajusta la altura deseada */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .item-image {
+    max-height: 100%;
+    max-width: 100%;
+  }
