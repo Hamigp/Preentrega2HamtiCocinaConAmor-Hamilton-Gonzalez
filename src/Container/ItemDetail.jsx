@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import ItemCounter from "../components/ItemCounter";
 import Card from "react-bootstrap/Card";
 import "./ItemDetail.css"; 
-import { CartContext } from "../context/CartContext";
+import { CartContext } from "../Context/CartContext";
 
 const ItemDetail = ({ product }) => {
   const { id, title, price, pictureUrl, stock, description } = product;
